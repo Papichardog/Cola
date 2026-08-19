@@ -1,0 +1,59 @@
+package Clase3.Cola;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Cola cola = new Cola();
+
+        System.out.println("=== COLA ===");
+
+        // ENQUEUE
+        System.out.println("\nAgregando 10, 20 y 30:");
+
+        cola.enqueue(10);
+        cola.enqueue(20);
+        cola.enqueue(30);
+
+        cola.mostrar();
+
+        // PEEK
+        System.out.println("\nPeek:");
+
+        System.out.println(
+                "Elemento del frente: " + cola.peek()
+        );
+
+        System.out.println("La cola sigue igual:");
+
+        cola.mostrar();
+
+        // DEQUEUE
+        System.out.println("\nDequeue:");
+
+        int eliminado = cola.dequeue();
+
+        System.out.println(
+                "Elemento eliminado: " + eliminado
+        );
+
+        System.out.println("Cola después del dequeue:");
+
+        cola.mostrar();
+
+        // LONGITUD
+        System.out.println("\nLongitud:");
+
+        System.out.println(
+                "Cantidad de elementos: "
+                        + cola.obtenerLongitud()
+        );
+
+        // ESTÁ VACÍA
+        System.out.println("\n¿Está vacía?");
+
+        System.out.println(
+                cola.estaVacia()
+        );
+    }
+}

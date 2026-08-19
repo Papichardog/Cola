@@ -1,0 +1,110 @@
+package Clase3.Cola;
+
+public class Cola {
+
+    private Nodo frente;
+    private Nodo ultimo;
+    private int longitud;
+
+    public Cola() {
+        this.frente = null;
+        this.ultimo = null;
+        this.longitud = 0;
+    }
+
+    // =====================================================
+    // ENQUEUE
+    // =====================================================
+    // Agrega un elemento al final de la cola.
+    public void enqueue(int valor) {
+
+        Nodo nuevo = new Nodo(valor);
+
+        // Caso 1: la cola está vacía
+        if (frente == null) {
+
+            frente = nuevo;
+            ultimo = nuevo;
+
+        } else {
+
+            // El nuevo nodo queda después del último
+            ultimo.enlazarSiguiente(nuevo);
+
+            // Ahora el nuevo nodo es el último
+            ultimo = nuevo;
+        }
+
+        longitud++;
+    }
+
+    // =====================================================
+    // DEQUEUE
+    // =====================================================
+    // Elimina y retorna el primer elemento de la cola.
+    public int eliminarTarea() {
+
+        if (frente == null) {
+            throw new IllegalStateException("La cola está vacía");
+        }
+
+        // Guardamos el valor
+        int valor = frente.obtenerValor();
+
+        // El siguiente pasa a ser el nuevo frente
+        frente = frente.obtenerSiguiente();
+
+        longitud--;
+
+        // Si quedó vacía, también debemos actualizar ultimo
+        if (frente == null) {
+            ultimo = null;
+        }
+
+        return valor;
+    }
+
+    // =====================================================
+    // PEEK
+    // =====================================================
+    // Mira el primer elemento sin eliminarlo.
+    public int peek() {
+
+        if (frente == null) {
+            throw new IllegalStateException("La cola está vacía");
+        }
+
+        return frente.obtenerValor();
+    }
+
+    // =====================================================
+    // LONGITUD
+    // =====================================================
+    public int obtenerLongitud() {
+        return longitud;
+    }
+
+    // =====================================================
+    // ESTÁ VACÍA
+    // =====================================================
+    public boolean estaVacia() {
+        return frente == null;
+    }
+
+    // =====================================================
+    // MOSTRAR
+    // =====================================================
+    public void mostrar() {
+
+        Nodo actual = frente;
+
+        while (actual != null) {
+
+            System.out.print(actual.obtenerValor() + " ");
+
+            actual = actual.obtenerSiguiente();
+        }
+
+        System.out.println();
+    }
+}
